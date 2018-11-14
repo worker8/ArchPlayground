@@ -1,7 +1,7 @@
 object Versions {
     val Tools = Tool()
     val AndroidConfigs = AndroidConfig()
-
+    val statik = "0.11.0"
     val rxJava = "2.1.13"
     val rxAndroid = "2.0.2"
     val rxBinding = "3.0.0-alpha1"

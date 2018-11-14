@@ -26,6 +26,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.Tools.kotlin"
     implementation "com.android.support:appcompat-v7:$Versions.support"
     implementation "com.android.support.constraint:constraint-layout:$Versions.constraintLayout"
+    implementation "com.github.kittinunf.statik:statik:$Versions.statik"
+
     testImplementation "junit:junit:$Versions.junit"
     androidTestImplementation "com.android.support.test:runner:$Versions.testRunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$Versions.espressoCore"
