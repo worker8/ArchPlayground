@@ -1,0 +1,32 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+
+android {
+    compileSdkVersion Versions.AndroidConfigs.sdkVersion
+    defaultConfig {
+        applicationId "github.com.worker8.archplayground"
+        minSdkVersion Versions.AndroidConfigs.minSdkVersion
+        targetSdkVersion Versions.AndroidConfigs.sdkVersion
+        versionCode Versions.AndroidConfigs.versionCode
+        versionName Versions.AndroidConfigs.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.Tools.kotlin"
+    implementation "com.android.support:appcompat-v7:$Versions.support"
+    implementation "com.android.support.constraint:constraint-layout:$Versions.constraintLayout"
+    testImplementation "junit:junit:$Versions.junit"
+    androidTestImplementation "com.android.support.test:runner:$Versions.testRunner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$Versions.espressoCore"
+}
