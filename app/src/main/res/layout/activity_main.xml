@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#39437C"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".simpleMVP.SimpleMvpActivity">
 
     <TextView
         android:id="@+id/titleLabel"
@@ -33,7 +33,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Name"
+        android:text="Email"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/white_alpha_70"
         android:textSize="14sp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEditText"
         tools:visibility="visible" />
@@ -79,7 +79,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Password"
@@ -117,7 +116,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textColor="@color/white_alpha_70"
         android:textSize="14sp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordEditText"
         tools:visibility="visible" />
@@ -127,7 +126,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bg_round_corner_yellow"
         android:enabled="false"
         android:fontFamily="sans-serif-condensed"

@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".simpleMVP.SimpleMvpActivity">
+
+        </activity>
+
+        <activity android:name=".simpleMVPRx.RxSimpleMvpActivity">
 
         </activity>
     </application>
