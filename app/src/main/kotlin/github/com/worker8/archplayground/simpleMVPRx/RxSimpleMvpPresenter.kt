@@ -3,6 +3,7 @@ package github.com.worker8.archplayground.simpleMVPRx
 import android.text.TextUtils
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import java.util.regex.Pattern
 
 class RxSimpleMvpPresenter(val view: View) {
     val disposables = CompositeDisposable()
@@ -24,10 +25,17 @@ class RxSimpleMvpPresenter(val view: View) {
     }
 
     fun isValidEmail(target: CharSequence): Boolean {
-        return if (TextUtils.isEmpty(target)) {
+        return if (target.isEmpty()) {
             false
         } else {
-            android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches()
+            Pattern.compile(
+                    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                            "\\@" +
+                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                            "(" +
+                            "\\." +
+                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                            ")+").matcher(target).matches()
         }
     }
 
