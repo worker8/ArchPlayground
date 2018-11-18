@@ -66,7 +66,10 @@ class SimpleMvpPresenterTest {
             view.showPasswordError(shouldShow = false)
             view.setButton(enabled = false)
         }
+    }
 
+    @Test
+    fun presenterTestButtonEnable_invalidPassword() {
         // action
         presenter.onEmailTextChanged("testing@gmail.com")
         presenter.onPasswordTextChanged("12") // invalid password
@@ -77,17 +80,27 @@ class SimpleMvpPresenterTest {
             view.showPasswordError(shouldShow = true)
             view.setButton(enabled = false)
         }
+    }
 
+    @Test
+    fun presenterTestButtonEnable_happyPath() {
         // action
         presenter.onEmailTextChanged("testing@gmail.com")
+
+        verify(exactly = 1) {
+            view.setButton(enabled = false)
+        }
+
         presenter.onPasswordTextChanged("1234567")
 
         // assert
         verify {
             view.showEmailError(shouldShow = false)
             view.showPasswordError(shouldShow = false)
-            view.setButton(enabled = true)
         }
 
+        verify(exactly = 1) {
+            view.setButton(enabled = true)
+        }
     }
 }

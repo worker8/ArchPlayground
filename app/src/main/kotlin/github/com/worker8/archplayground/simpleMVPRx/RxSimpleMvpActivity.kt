@@ -33,6 +33,14 @@ class RxSimpleMvpActivity : AppCompatActivity() {
                     passwordErrorLabel.visibility = View.INVISIBLE
                 }
             }
+
+            override fun setButton(enabled: Boolean) {
+                if (enabled) {
+                    sendButton.visibility = View.VISIBLE
+                } else {
+                    sendButton.visibility = View.INVISIBLE
+                }
+            }
         }
     }
 
@@ -43,5 +51,10 @@ class RxSimpleMvpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         presenter.init()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 }

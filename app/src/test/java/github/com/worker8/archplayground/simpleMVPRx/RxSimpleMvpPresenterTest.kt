@@ -24,6 +24,9 @@ class RxSimpleMvpPresenterTest {
         every { view.passwordTextChange } returns passwordSubject
         every { view.showEmailError(any()) } just Runs
         every { view.showPasswordError(any()) } just Runs
+        every { view.setButton(any()) } just Runs
+
+        presenter.init()
     }
 
     @Test
@@ -42,13 +45,7 @@ class RxSimpleMvpPresenterTest {
 
     @Test
     fun presenterNoError() {
-        // assert
-        verify {
-            view wasNot called
-        }
-
         // action
-        presenter.init()
         emailSubject.onNext("test@gmail.com")
         passwordSubject.onNext("1234567")
 
@@ -56,6 +53,48 @@ class RxSimpleMvpPresenterTest {
         verify {
             view.showEmailError(shouldShow = false)
             view.showPasswordError(shouldShow = false)
+        }
+    }
+
+    @Test
+    fun presenterTestButtonEnable_invalidEmail() {
+        // action
+        emailSubject.onNext("testlalala") // invalid email
+        passwordSubject.onNext("12345678")
+
+        // assert
+        verify {
+            view.showEmailError(shouldShow = true)
+            view.showPasswordError(shouldShow = false)
+            view.setButton(enabled = false)
+        }
+    }
+
+    @Test
+    fun presenterTestButtonEnable_invalidPassword() {
+        // action
+        emailSubject.onNext("johndoe@gmail.com")
+        passwordSubject.onNext("123")// invalid password
+
+        // assert
+        verify {
+            view.showEmailError(shouldShow = false)
+            view.showPasswordError(shouldShow = true)
+            view.setButton(enabled = false)
+        }
+    }
+
+    @Test
+    fun presenterTestButtonEnable_happyPath() {
+        // action
+        emailSubject.onNext("johndoe@gmail.com") // valid email
+        passwordSubject.onNext("12345678")// valid password
+
+        // assert
+        verify {
+            view.showEmailError(shouldShow = false)
+            view.showPasswordError(shouldShow = false)
+            view.setButton(enabled = true)
         }
     }
 }
