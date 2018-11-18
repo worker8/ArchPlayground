@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
 import com.github.kittinunf.statik.dsl.textRow
+import github.com.worker8.archplayground.rxFlatmapCombo.RxFlatmapComboActivity
 import github.com.worker8.archplayground.simpleMVP.SimpleMvpActivity
 import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpActivity
 import kotlinx.android.synthetic.main.activity_top.*
@@ -31,7 +32,14 @@ class TopActivity : AppCompatActivity() {
             }
         }
 
-        val section = section { rows(row1, row2) }
+        val row3 = textRow {
+            text = "Rx Flatmap Combo"
+            onClickListener = {
+                startActivity(Intent(this@TopActivity, RxFlatmapComboActivity::class.java))
+            }
+        }
+
+        val section = section { rows(row1, row2, row3) }
 
         list.adapter = statik {
             sections(section)

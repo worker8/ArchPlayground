@@ -5,6 +5,7 @@ object Versions {
     val rxJava = "2.1.13"
     val rxAndroid = "2.0.2"
     val rxBinding = "3.0.0-alpha1"
+    val rxRelay = "2.1.0"
     val fuel = "1.15.1"
     val paging = "1.0.0"
     val pagingRx = "1.0.0-rc1"
@@ -19,6 +20,8 @@ object Versions {
     val picasso = "2.71828"
     val verticalViewPager = "19.0.1"
     val threeTen = "1.1.1"
+    val mockk = "1.8.13.kotlin13"
+
 }
 
 class Tool {

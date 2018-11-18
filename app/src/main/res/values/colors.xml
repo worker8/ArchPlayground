@@ -14,6 +14,10 @@
     <!--Hex color percentage: https://stackoverflow.com/a/17239853-->
     <color name="yellow">#FFF488</color>
     <color name="yellow_50">#80FFF488</color>
+
+
+    <color name="red_error">#FE2C55</color>
+    <color name="purple">#4E4D87</color>
     <color name="blue">#39437C</color>
 
 </resources>

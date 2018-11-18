@@ -130,6 +130,7 @@
         android:background="@drawable/bg_round_corner_yellow"
         android:enabled="false"
         android:fontFamily="sans-serif-condensed"
+        android:foreground="?selectableItemBackground"
         android:text="SEND"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/blue"
