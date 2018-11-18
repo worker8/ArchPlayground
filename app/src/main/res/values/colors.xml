@@ -5,11 +5,14 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
-
     <color name="white_alpha_70">#B3FFFFFF</color>
     <color name="white_alpha_50">#80FFFFFF</color>
     <color name="white_alpha_20">#33FFFFFF</color>
     <color name="white_alpha_10">#1AFFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="black_alpha_50">#80000000</color>
+
 
     <!--Hex color percentage: https://stackoverflow.com/a/17239853-->
     <color name="yellow">#FFF488</color>
@@ -19,5 +22,6 @@
     <color name="red_error">#FE2C55</color>
     <color name="purple">#4E4D87</color>
     <color name="blue">#39437C</color>
+    <color name="blue_50">#8039437C</color>
 
 </resources>

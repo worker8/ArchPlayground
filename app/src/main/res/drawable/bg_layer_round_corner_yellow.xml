@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_round_corner_yellow_50" android:state_enabled="false" android:textColor="@color/white_alpha_50" />
+    <item android:drawable="@drawable/bg_round_corner_yellow" android:state_enabled="true" />
+</selector>
