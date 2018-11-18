@@ -1,7 +1,6 @@
 package github.com.worker8.archplayground.simpleMVP
 
-import android.text.TextUtils
-import java.util.regex.Pattern
+import github.com.worker8.archplayground.common.isValidEmail
 
 class SimpleMvpPresenter(val view: View) {
     var email = ""
@@ -9,33 +8,29 @@ class SimpleMvpPresenter(val view: View) {
 
     fun onEmailTextChanged(_email: String) {
         email = _email
-        val shouldShowEmailError = !email.isBlank() && !isValidEmail(email)
-        view.showEmailError(shouldShowEmailError)
+        view.showEmailError(shouldShowEmailError(email))
+        view.setButton(enabled = shouldSetButtonEnable(email, password))
     }
 
     fun onPasswordTextChanged(_password: String) {
         password = _password
-        val shouldShowPasswordError = !(password.length > 6)
-        view.showPasswordError(shouldShowPasswordError)
+        view.showPasswordError(shouldShowPasswordError(password))
+        view.setButton(enabled = shouldSetButtonEnable(email, password))
     }
 
-    fun isValidEmail(target: CharSequence): Boolean {
-        return if (target.isEmpty()) {
-            false
-        } else {
-            Pattern.compile(
-                    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                            "\\@" +
-                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                            "(" +
-                            "\\." +
-                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                            ")+").matcher(target).matches()
-        }
-    }
+    private fun shouldSetButtonEnable(email: String, password: String) =
+            shouldShowEmailError(email) && shouldShowPasswordError(password)
+
+    private fun shouldShowPasswordError(password: String) =
+            !(password.length > 6)
+
+    private fun shouldShowEmailError(email: String) =
+            !email.isBlank() && !email.isValidEmail()
+
 
     interface View {
         fun showEmailError(shouldShow: Boolean)
         fun showPasswordError(shouldShow: Boolean)
+        fun setButton(enabled: Boolean)
     }
 }

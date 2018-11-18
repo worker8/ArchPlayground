@@ -4,22 +4,30 @@ import github.com.worker8.archplayground.simpleMVP.SimpleMvpPresenter
 import io.mockk.*
 import io.reactivex.subjects.PublishSubject
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class RxSimpleMvpPresenterTest {
-    @Test
-    fun presenterError() {
-        // setup
-        val view = mockk<RxSimpleMvpPresenter.View>()
-        val presenter = RxSimpleMvpPresenter(view)
-        val emailSubject: PublishSubject<String> = PublishSubject.create()
-        val passwordSubject: PublishSubject<String> = PublishSubject.create()
+    lateinit var view: RxSimpleMvpPresenter.View
+    lateinit var presenter: RxSimpleMvpPresenter
 
+    lateinit var emailSubject: PublishSubject<String>
+    lateinit var passwordSubject: PublishSubject<String>
+
+    @Before
+    fun setup() {
+        view = mockk()
+        presenter = RxSimpleMvpPresenter(view)
+        emailSubject = PublishSubject.create()
+        passwordSubject = PublishSubject.create()
         every { view.emailTextChange } returns emailSubject
         every { view.passwordTextChange } returns passwordSubject
         every { view.showEmailError(any()) } just Runs
         every { view.showPasswordError(any()) } just Runs
+    }
 
+    @Test
+    fun presenterError() {
         // action
         presenter.init()
         emailSubject.onNext("not email")
@@ -34,17 +42,6 @@ class RxSimpleMvpPresenterTest {
 
     @Test
     fun presenterNoError() {
-        // setup
-        val view = mockk<RxSimpleMvpPresenter.View>()
-        val presenter = RxSimpleMvpPresenter(view)
-        val emailSubject: PublishSubject<String> = PublishSubject.create()
-        val passwordSubject: PublishSubject<String> = PublishSubject.create()
-
-        every { view.emailTextChange } returns emailSubject
-        every { view.passwordTextChange } returns passwordSubject
-        every { view.showEmailError(any()) } just Runs
-        every { view.showPasswordError(any()) } just Runs
-
         // assert
         verify {
             view wasNot called

@@ -1,6 +1,7 @@
 package github.com.worker8.archplayground.simpleMVPRx
 
 import android.text.TextUtils
+import github.com.worker8.archplayground.common.isValidEmail
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import java.util.regex.Pattern
@@ -10,7 +11,7 @@ class RxSimpleMvpPresenter(val view: View) {
 
     fun init() {
         view.emailTextChange
-                .map { emailString -> emailString.isNotBlank() && !isValidEmail(emailString) }
+                .map { emailString -> emailString.isNotBlank() && !emailString.isValidEmail() }
                 .subscribe { shouldShowError ->
                     view.showEmailError(shouldShowError)
                 }
@@ -22,21 +23,6 @@ class RxSimpleMvpPresenter(val view: View) {
                     view.showPasswordError(shouldShowError)
                 }
                 .let { disposables.add(it) }
-    }
-
-    fun isValidEmail(target: CharSequence): Boolean {
-        return if (target.isEmpty()) {
-            false
-        } else {
-            Pattern.compile(
-                    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                            "\\@" +
-                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                            "(" +
-                            "\\." +
-                            "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                            ")+").matcher(target).matches()
-        }
     }
 
     interface View {

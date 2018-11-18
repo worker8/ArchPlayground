@@ -13,6 +13,14 @@ class SimpleMvpActivity : AppCompatActivity() {
 
     val view: SimpleMvpPresenter.View by lazy {
         object : SimpleMvpPresenter.View {
+            override fun setButton(enabled: Boolean) {
+                if (enabled) {
+                    sendButton.visibility = View.VISIBLE
+                } else {
+                    sendButton.visibility = View.INVISIBLE
+                }
+            }
+
             override fun showEmailError(shouldShow: Boolean) {
                 if (shouldShow) {
                     emailErrorLabel.visibility = View.VISIBLE
