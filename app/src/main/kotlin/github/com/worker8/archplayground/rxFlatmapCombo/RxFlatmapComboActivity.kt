@@ -25,6 +25,9 @@ import io.reactivex.disposables.CompositeDisposable
 
 class RxFlatmapComboActivity : AppCompatActivity() {
     //    val button1Subject: PublishSubject<Unit> = PublishSubject.create<Unit>()
+    val disposables = CompositeDisposable()
+    var relay1 = PublishRelay.create<String>()
+    var relay2 = PublishRelay.create<String>()
     val button1Click by lazy {
 
         button1.clicks().map {
@@ -34,17 +37,12 @@ class RxFlatmapComboActivity : AppCompatActivity() {
     }
 
     val button2Click by lazy {
-
         button2.clicks().map {
             Log.d("ddw", "button2 clicked")
             throw Exception("hey there, yo!")
             "button2 text\n"
         }
     }
-    val disposables = CompositeDisposable()
-    var relay1 = PublishRelay.create<String>()
-
-    var relay2 = PublishRelay.create<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#39437C"
     android:padding="16dp"
-    tools:context=".simpleMVP.SimpleMvpActivity">
+    tools:context=".simpleMVP.SimpleMvvmActivity">
 
     <TextView
         android:id="@+id/titleLabel"
@@ -67,7 +67,7 @@
         android:fontFamily="sans-serif-condensed"
         android:text="invalid email format"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/white_alpha_70"
+        android:textColor="@color/red_error"
         android:textSize="14sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +114,7 @@
         android:fontFamily="sans-serif-condensed"
         android:text="password has to be at least 6 characters"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textColor="@color/white_alpha_70"
+        android:textColor="@color/red_error"
         android:textSize="14sp"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"

@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TopActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
-        <activity android:name=".simpleMVP.SimpleMvpActivity">
+        <activity android:name=".simpleMVP.SimpleMvvmActivity">
 
         </activity>
 
@@ -22,10 +25,8 @@
         </activity>
 
         <activity android:name=".rxFlatmapCombo.RxFlatmapComboActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
+
     </application>
 </manifest>
