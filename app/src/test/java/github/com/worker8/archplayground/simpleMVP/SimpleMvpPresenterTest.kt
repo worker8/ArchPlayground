@@ -27,7 +27,7 @@ class SimpleMvpPresenterTest {
         // assert
         verify {
             view.showEmailError(shouldShow = true)
-            view.showPasswordError(shouldShow = true)
+            view.showPasswordError(shouldShow = false)
         }
     }
 
