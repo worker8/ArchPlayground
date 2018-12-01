@@ -1,26 +1,14 @@
 package github.com.worker8.archplayground.rxFlatmapCombo
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
+import android.support.v7.app.AppCompatActivity
 import android.text.Html
-import android.text.TextUtils
-import android.text.TextWatcher
 import android.util.Log
-import android.view.View
 import com.jakewharton.rxbinding3.view.clicks
-import com.jakewharton.rxbinding3.widget.textChanges
-import github.com.worker8.archplayground.R
-import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpPresenter
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_rx_flatmap_combo.*
-import java.lang.Exception
-import kotlin.math.log
 import com.jakewharton.rxrelay2.PublishRelay
+import github.com.worker8.archplayground.R
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.activity_rx_flatmap_combo.*
 
 
 class RxFlatmapComboActivity : AppCompatActivity() {
@@ -49,23 +37,23 @@ class RxFlatmapComboActivity : AppCompatActivity() {
         setContentView(R.layout.activity_rx_flatmap_combo)
 
         button1Click
-                .subscribe(relay1)
-                .let { disposables.add(it) }
+            .subscribe(relay1)
+            .let { disposables.add(it) }
 
         button2Click
-                .subscribe(relay2)
-                .let { disposables.add(it) }
+            .subscribe(relay2)
+            .let { disposables.add(it) }
 
         relay1
-                .flatMap { relay2 }
-                .subscribe(
-                        {
-                            textArea.append(it)
-                        },
-                        { error ->
-                            textArea.append(Html.fromHtml("\n<font color='#FE2C55'>${error.message}</font>"))
-                        })
-                .let { disposables.add(it) }
+            .flatMap { relay2 }
+            .subscribe(
+                {
+                    textArea.append(it)
+                },
+                { error ->
+                    textArea.append(Html.fromHtml("\n<font color='#FE2C55'>${error.message}</font>"))
+                })
+            .let { disposables.add(it) }
     }
 
     override fun onDestroy() {

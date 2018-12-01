@@ -19,13 +19,13 @@ class SimpleMvpPresenter(val view: View) {
     }
 
     private fun shouldSetButtonEnable(email: String, password: String) =
-            !shouldShowEmailError(email) && !shouldShowPasswordError(password)
+        !shouldShowEmailError(email) && !shouldShowPasswordError(password)
 
     private fun shouldShowPasswordError(password: String) =
-            !(password.length > 6)
+        !(password.length > 6)
 
     private fun shouldShowEmailError(email: String) =
-            !email.isBlank() && !email.isValidEmail()
+        !email.isBlank() && !email.isValidEmail()
 
 
     interface View {

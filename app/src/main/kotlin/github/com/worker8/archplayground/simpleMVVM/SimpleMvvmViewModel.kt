@@ -21,32 +21,32 @@ class SimpleMvvmViewModel(userInput: SimpleMvvmViewModel.UserInput) : ViewModel(
     init {
         userInput.apply {
             emailChangedShared
-                    .map { emailString -> shouldShowEmailError(emailString) }
-                    .subscribe {
-                        outputSubject.onNext(outputSubject.realValue.copy(showEmailError = it))
-                    }
+                .map { emailString -> shouldShowEmailError(emailString) }
+                .subscribe {
+                    outputSubject.onNext(outputSubject.realValue.copy(showEmailError = it))
+                }
 
             passwordChangedShared
-                    .map { passwordString -> shouldShowPasswordError(passwordString) }
-                    .subscribe {
-                        outputSubject.onNext(outputSubject.realValue.copy(showPasswordError = it))
-                    }
+                .map { passwordString -> shouldShowPasswordError(passwordString) }
+                .subscribe {
+                    outputSubject.onNext(outputSubject.realValue.copy(showPasswordError = it))
+                }
 
             Observable.combineLatest(emailChangedShared, passwordChangedShared, BiFunction<String, String, Boolean> { emailString, passwordString ->
                 shouldSetButtonEnable(emailString, passwordString)
             })
-                    .subscribe { outputSubject.onNext(outputSubject.realValue.copy(enableButton = it)) }
+                .subscribe { outputSubject.onNext(outputSubject.realValue.copy(enableButton = it)) }
         }
     }
 
     private fun shouldSetButtonEnable(email: String, password: String) =
-            !shouldShowEmailError(email) && !shouldShowPasswordError(password)
+        !shouldShowEmailError(email) && !shouldShowPasswordError(password)
 
     private fun shouldShowPasswordError(password: String) =
-            !(password.length > 6)
+        !(password.length > 6)
 
     private fun shouldShowEmailError(email: String) =
-            !email.isBlank() && !email.isValidEmail()
+        !email.isBlank() && !email.isValidEmail()
 
 
     interface UserInput {

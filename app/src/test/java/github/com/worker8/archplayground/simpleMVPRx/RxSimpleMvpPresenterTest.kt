@@ -1,9 +1,7 @@
 package github.com.worker8.archplayground.simpleMVPRx
 
-import github.com.worker8.archplayground.simpleMVP.SimpleMvpPresenter
 import io.mockk.*
 import io.reactivex.subjects.PublishSubject
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 

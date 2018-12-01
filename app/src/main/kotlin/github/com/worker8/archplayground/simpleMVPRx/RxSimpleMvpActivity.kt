@@ -1,14 +1,10 @@
 package github.com.worker8.archplayground.simpleMVPRx
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.jakewharton.rxbinding3.widget.textChanges
 import github.com.worker8.archplayground.R
-import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpPresenter
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 
