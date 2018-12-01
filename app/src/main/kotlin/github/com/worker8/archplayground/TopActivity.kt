@@ -1,8 +1,8 @@
 package github.com.worker8.archplayground
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
