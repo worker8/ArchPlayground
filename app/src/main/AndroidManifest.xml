@@ -16,15 +16,21 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".simpleMVP.SimpleMvvmActivity">
+        <activity
+            android:name=".simpleMVP.SimpleMvvmActivity"
+            android:theme="@style/BlueishAppTheme">
 
         </activity>
 
-        <activity android:name=".simpleMVPRx.RxSimpleMvpActivity">
+        <activity
+            android:name=".simpleMVPRx.RxSimpleMvpActivity"
+            android:theme="@style/BlueishAppTheme">
 
         </activity>
 
-        <activity android:name=".rxFlatmapCombo.RxFlatmapComboActivity">
+        <activity
+            android:name=".rxFlatmapCombo.RxFlatmapComboActivity"
+            android:theme="@style/BlueishAppTheme">
 
         </activity>
 

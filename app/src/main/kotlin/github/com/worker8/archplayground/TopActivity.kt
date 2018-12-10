@@ -25,7 +25,7 @@ class TopActivity : AppCompatActivity() {
         }
 
         val row2 = textRow {
-            text = "MVP example with RX"
+            text = "MVP example with Rx"
             onClickListener = {
                 startActivity(Intent(this@TopActivity, RxSimpleMvpActivity::class.java))
             }
