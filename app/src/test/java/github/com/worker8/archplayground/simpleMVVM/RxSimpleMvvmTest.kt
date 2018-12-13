@@ -24,7 +24,6 @@ class RxSimpleMvvmTest {
 
         viewModel = SimpleMvvmViewModel(userInput)
 
-
     }
 
     @Test

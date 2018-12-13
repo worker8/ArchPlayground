@@ -50,6 +50,10 @@ dependencies {
     implementation "com.jakewharton.rxbinding3:rxbinding:$Versions.rxBinding"
     implementation "com.jakewharton.rxbinding3:rxbinding:$Versions.rxBinding"
     implementation "com.jakewharton.rxrelay2:rxrelay:$Versions.rxRelay"
+    //implementation "com.github.kittinunf:remote-redux-devtools-android:1.0.0.alpha8"
+//    implementation "com.github.kittinunf.remote-redux-devtools-android:core:1.0.0.alpha8"
+
+
     testImplementation "io.mockk:mockk:1.8.13.kotlin13"
     testImplementation "junit:junit:$Versions.junit"
     androidTestImplementation "com.android.support.test:runner:$Versions.testRunner"

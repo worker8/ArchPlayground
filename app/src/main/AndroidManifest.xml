@@ -34,5 +34,9 @@
 
         </activity>
 
+        <activity android:name=".rxRedux.RxReduxActivity">
+
+        </activity>
+
     </application>
 </manifest>

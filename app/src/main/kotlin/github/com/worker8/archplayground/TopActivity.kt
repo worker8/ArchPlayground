@@ -8,6 +8,7 @@ import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
 import com.github.kittinunf.statik.dsl.textRow
 import github.com.worker8.archplayground.rxFlatmapCombo.RxFlatmapComboActivity
+import github.com.worker8.archplayground.rxRedux.RxReduxActivity
 import github.com.worker8.archplayground.simpleMVP.SimpleMvvmActivity
 import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpActivity
 import kotlinx.android.synthetic.main.activity_top.*
@@ -45,7 +46,14 @@ class TopActivity : AppCompatActivity() {
             }
         }
 
-        val section = section { rows(row1, row2, row3, row4) }
+        val row5 = textRow {
+            text = "RxRedux"
+            onClickListener = {
+                startActivity(Intent(this@TopActivity, RxReduxActivity::class.java))
+            }
+        }
+
+        val section = section { rows(row1, row2, row3, row4, row5) }
 
         list.adapter = statik {
             sections(section)
