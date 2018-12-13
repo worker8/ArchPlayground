@@ -4,13 +4,17 @@ import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
+import github.com.worker8.archplayground.common.addTo
 import github.com.worker8.archplayground.common.isValidEmail
 import github.com.worker8.archplayground.common.ofType
-import github.com.worker8.archplayground.rxRedux.*
+import github.com.worker8.archplayground.rxRedux.Action
+import github.com.worker8.archplayground.rxRedux.Reducer
+import github.com.worker8.archplayground.rxRedux.State
+import github.com.worker8.archplayground.rxRedux.Store
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
-import com.github.kittinunf.redux.devTools.core
+
 
 sealed class LoginFormAction : Action
 class EmailInput(val emailString: String) : LoginFormAction()
@@ -21,8 +25,6 @@ class EnableButton(val isEnable: Boolean) : LoginFormAction()
 
 class RxReduxViewModel(userInput: RxReduxViewModel.UserInput) : ViewModel(), LifecycleObserver {
     private val disposableBag = CompositeDisposable()
-    //private val outputSubject = BehaviorSubject.createDefault<Output>(Output())
-    //val output = outputSubject.hide()
 
     data class ScreenState(val emailString: String = "",
                            val passwordString: String = "",
@@ -61,68 +63,40 @@ class RxReduxViewModel(userInput: RxReduxViewModel.UserInput) : ViewModel(), Lif
                 }
                 else -> newState = currentState
             }
-            Log.d("ddw","$newState")
+            Log.d("ddw", "$newState")
             return newState
         }
     }
 
     val emailChangedShared = userInput.onEmailChanged.share()
     val passwordChangedShared = userInput.onPasswordChanged.share()
-    class DevToolsStore<S : State>(private val store: StoreType<S>) : StoreType<S> by store {
-
-        object DevToolsStateChangeAction : Action
-
-        private val instrument =
-            Instrument(emulatorDefaultOption(), store.initialState).apply {
-                // configure
-                onError = {
-                    Log.e("[Devtools]", "Instrument", it)
-                }
-                onMessageReceived = {
-                    store.dispatch(DevToolsStateChangeAction)
-                }
-
-                start()
-                connectBlocking()
-                // send the first state
-                handleStateChangeFromAction(store.initialState, Store.INIT)
-            }
-
-        init {
-            //modify replaceReducer so we can inject state from the Devtools
-            store.replaceReducer = { reducedState, action ->
-                if (action is DevToolsStateChangeAction) {
-                    instrument.state
-                } else {
-                    instrument.handleStateChangeFromAction(reducedState, action)
-                    reducedState
-                }
-            }
-        }
-    }
-
-    val store = DevToolsStore(Store(ScreenState(), loginFormReducer))
+    val store = Store(ScreenState(), loginFormReducer)
 
     init {
         userInput.apply {
             emailChangedShared
                 .map { emailString -> shouldShowEmailError(emailString) }
-                .subscribe {
-                    store.dispatch(EmailError(it))
-                }
+                .subscribe { store.dispatch(EmailError(it)) }
+                .addTo(disposableBag)
+
+            emailChangedShared
+                .subscribe { emailString -> store.dispatch(EmailInput(emailString)) }
+                .addTo(disposableBag)
+
+            passwordChangedShared
+                .subscribe { passwordString -> store.dispatch(PasswordInput(passwordString)) }
+                .addTo(disposableBag)
 
             passwordChangedShared
                 .map { passwordString -> shouldShowPasswordError(passwordString) }
-                .subscribe {
-                    store.dispatch(PasswordError(it))
-                }
+                .subscribe { store.dispatch(PasswordError(it)) }
+                .addTo(disposableBag)
 
             Observable.combineLatest(emailChangedShared, passwordChangedShared, BiFunction<String, String, Boolean> { emailString, passwordString ->
                 shouldSetButtonEnable(emailString, passwordString)
             })
-                .subscribe {
-                    store.dispatch(EnableButton(it))
-                }
+                .subscribe { store.dispatch(EnableButton(it)) }
+                .addTo(disposableBag)
         }
     }
 
