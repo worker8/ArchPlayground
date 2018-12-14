@@ -4,13 +4,13 @@ import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import android.util.Log
+import com.mercari.rxredux.Action
+import com.mercari.rxredux.Reducer
+import com.mercari.rxredux.State
+import com.mercari.rxredux.Store
 import github.com.worker8.archplayground.common.addTo
 import github.com.worker8.archplayground.common.isValidEmail
 import github.com.worker8.archplayground.common.ofType
-import github.com.worker8.archplayground.rxRedux.Action
-import github.com.worker8.archplayground.rxRedux.Reducer
-import github.com.worker8.archplayground.rxRedux.State
-import github.com.worker8.archplayground.rxRedux.Store
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
