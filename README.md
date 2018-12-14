@@ -7,6 +7,7 @@ I made this repo to learn about different Android Architectures. I want to evalu
 Currently included in this repo:
 - Simple MVP, with Unit tests
 - Simple MVP using Rx, with Unit tests
-- Simple MVVM using Android Arch Component (going to write the tests)
+- Simple MVVM using Android Arch Component, with Rx
+- Simple RxRedux
 
 - more to come...
