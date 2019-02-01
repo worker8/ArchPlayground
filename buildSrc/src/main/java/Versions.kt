@@ -26,7 +26,7 @@ object Versions {
 
 class Tool {
     val kotlin = "1.3.0"
-    val buildGradle = "3.2.0"
+    val buildGradle = "3.3.0"
 }
 
 class AndroidConfig {
