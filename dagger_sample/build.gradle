@@ -1,0 +1,36 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
+
+android {
+    compileSdkVersion Versions.AndroidConfigs.sdkVersion
+
+    defaultConfig {
+        applicationId "github.com.worker8.archplayground"
+        minSdkVersion Versions.AndroidConfigs.minSdkVersion
+        targetSdkVersion Versions.AndroidConfigs.sdkVersion
+        versionCode Versions.AndroidConfigs.versionCode
+        versionName Versions.AndroidConfigs.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.Tools.kotlin"
+    implementation "com.android.support:appcompat-v7:$Versions.support"
+    implementation "com.google.dagger:dagger-android:$Versions.dagger"
+    implementation "com.google.dagger:dagger-android-support:$Versions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$Versions.dagger"
+}

@@ -7,7 +7,7 @@ import android.support.v7.widget.DividerItemDecoration
 import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
 import com.github.kittinunf.statik.dsl.textRow
-import github.com.worker8.archplayground.rxFlatmapCombo.RxFlatmapComboActivity
+import github.com.worker8.archplayground.motionLayout.MotionLayoutActivity
 import github.com.worker8.archplayground.rxRedux.RxReduxActivity
 import github.com.worker8.archplayground.simpleMVP.SimpleMvvmActivity
 import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpActivity
@@ -35,7 +35,7 @@ class TopActivity : AppCompatActivity() {
         val row3 = textRow {
             text = "Rx Flatmap Combo"
             onClickListener = {
-                startActivity(Intent(this@TopActivity, RxFlatmapComboActivity::class.java))
+                startActivity(Intent(this@TopActivity, MotionLayoutActivity::class.java))
             }
         }
 

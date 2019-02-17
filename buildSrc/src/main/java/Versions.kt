@@ -13,7 +13,7 @@ object Versions {
     val room = "1.1.1"
     val support = "28.0.0"
     val retrofit = "2.4.0"
-    val constraintLayout = "1.1.3"
+    val constraintLayout = "2.0.0-alpha2"
     val junit = "4.12"
     val testRunner = "1.0.2"
     val espressoCore = "3.0.2"
@@ -21,7 +21,7 @@ object Versions {
     val verticalViewPager = "19.0.1"
     val threeTen = "1.1.1"
     val mockk = "1.8.13.kotlin13"
-
+    val dagger = "2.21"
 }
 
 class Tool {
