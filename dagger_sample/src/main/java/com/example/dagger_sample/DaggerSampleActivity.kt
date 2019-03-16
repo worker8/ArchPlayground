@@ -20,6 +20,11 @@ class DaggerSampleActivity : DaggerAppCompatActivity() {
             repo.saveStringToPref(daggerInput.text.toString())
             refreshRecyclerView()
         }
+
+        daggerRemoveButton.setOnClickListener {
+            repo.removeAllPref()
+            refreshRecyclerView()
+        }
     }
 
     private fun setupViews() {

@@ -21,6 +21,10 @@ class DaggerSampleRepo @Inject constructor(context: Context) {
         prefs.save(CONSTANT_KEY, "$oldString$DELIMITER$newString")
     }
 
+    fun removeAllPref() {
+        prefs.edit().clear().commit()
+    }
+
     companion object {
         const val CONSTANT_KEY = "CONSTANT_KEY"
         const val DELIMITER = "DELIMITER"
