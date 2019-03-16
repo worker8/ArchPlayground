@@ -2,12 +2,12 @@ package github.com.worker8.archplayground
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
 import com.github.kittinunf.statik.dsl.textRow
-import github.com.worker8.archplayground.motionLayout.MotionLayoutActivity
 import github.com.worker8.archplayground.rxRedux.RxReduxActivity
 import github.com.worker8.archplayground.simpleMVP.SimpleMvvmActivity
 import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpActivity
@@ -33,27 +33,20 @@ class TopActivity : AppCompatActivity() {
         }
 
         val row3 = textRow {
-            text = "Rx Flatmap Combo"
-            onClickListener = {
-                startActivity(Intent(this@TopActivity, MotionLayoutActivity::class.java))
-            }
-        }
-
-        val row4 = textRow {
             text = "Simple Mvvm"
             onClickListener = {
                 startActivity(Intent(this@TopActivity, SimpleMvvmActivity::class.java))
             }
         }
 
-        val row5 = textRow {
+        val row4 = textRow {
             text = "RxRedux"
             onClickListener = {
                 startActivity(Intent(this@TopActivity, RxReduxActivity::class.java))
             }
         }
 
-        val section = section { rows(row1, row2, row3, row4, row5) }
+        val section = section { rows(row1, row2, row3, row4) }
 
         list.adapter = statik {
             sections(section)

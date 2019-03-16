@@ -1,8 +1,8 @@
 package github.com.worker8.archplayground.simpleMVP
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import github.com.worker8.archplayground.common.isValidEmail
 import github.com.worker8.archplayground.common.realValue
 import io.reactivex.Observable

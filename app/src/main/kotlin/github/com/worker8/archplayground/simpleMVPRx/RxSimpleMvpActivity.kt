@@ -1,8 +1,8 @@
 package github.com.worker8.archplayground.simpleMVPRx
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.jakewharton.rxbinding3.widget.textChanges
 import github.com.worker8.archplayground.R
 import io.reactivex.Observable

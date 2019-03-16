@@ -1,9 +1,10 @@
 package github.com.worker8.archplayground.simpleMVP
 
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+
 import android.util.Log
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.mercari.rxredux.Action
 import com.mercari.rxredux.Reducer
 import com.mercari.rxredux.State

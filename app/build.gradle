@@ -24,27 +24,29 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
-    configurations.all {
-        resolutionStrategy.force "com.android.support:design:$Versions.support"
-        resolutionStrategy.force "com.android.support:support-v4:$Versions.support"
-        resolutionStrategy.force "com.android.support:support-compat:$Versions.support"
-        resolutionStrategy.force "com.android.support:support-media-compat:$Versions.support"
-        resolutionStrategy.force "com.android.support:animated-vector-drawable:$Versions.support"
-    }
+//    configurations.all {
+//        resolutionStrategy.force "com.android.support:design:$Versions.support"
+//        resolutionStrategy.force "com.android.support:support-v4:$Versions.support"
+//        resolutionStrategy.force "com.android.support:support-compat:$Versions.support"
+//        resolutionStrategy.force "com.android.support:support-media-compat:$Versions.support"
+//        resolutionStrategy.force "com.android.support:animated-vector-drawable:$Versions.support"
+//    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.Tools.kotlin"
-    implementation "com.android.support:appcompat-v7:$Versions.support"
-    implementation "com.android.support.constraint:constraint-layout:$Versions.constraintLayout"
+    implementation "androidx.appcompat:appcompat:$Versions.appCompat"
+    implementation "androidx.constraintlayout:constraintlayout:$Versions.constraintLayout"
+//    implementation "com.android.support:appcompat-v7:$Versions.support"
+//    implementation "com.android.support.constraint:constraint-layout:$Versions.constraintLayout"
     implementation "com.github.kittinunf.statik:statik:$Versions.statik"
     implementation "com.github.kittinunf.fuel:fuel-android:$Versions.fuel"
     implementation "com.github.kittinunf.fuel:fuel-rxjava:$Versions.fuel"
-    implementation "android.arch.paging:runtime:$Versions.paging"
-    implementation "android.arch.paging:rxjava2:$Versions.pagingRx"
-    implementation "android.arch.lifecycle:extensions:$Versions.archLifecycle"
-    implementation "android.arch.lifecycle:viewmodel:$Versions.archLifecycle"
+//    implementation "android.arch.paging:runtime:$Versions.paging"
+//    implementation "android.arch.paging:rxjava2:$Versions.pagingRx"
+    implementation "androidx.lifecycle:lifecycle-extensions:$Versions.archLifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$Versions.archLifecycle"
     implementation "io.reactivex.rxjava2:rxjava:$Versions.rxJava"
     implementation "io.reactivex.rxjava2:rxandroid:$Versions.rxAndroid"
     implementation "com.jakewharton.rxbinding3:rxbinding:$Versions.rxBinding"
@@ -52,6 +54,7 @@ dependencies {
     implementation "com.jakewharton.rxrelay2:rxrelay:$Versions.rxRelay"
     implementation "com.github.kittinunf:remote-redux-devtools-android:1.0.0.alpha8"
     implementation "com.mercari.rxredux:rxredux:1.0.0-rc1"
+
     //implementation "com.github.kittinunf:remote-redux-devtools-android:1.0.0.alpha8"
 //    implementation "com.github.kittinunf.remote-redux-devtools-android:core:1.0.0.alpha8"
 

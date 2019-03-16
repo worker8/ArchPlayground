@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">dagger_sample</string>
+    <string name="add">Add</string>
+    <string name="explanation">This example show case how to inject Shared Preference using Dagger</string>
 </resources>

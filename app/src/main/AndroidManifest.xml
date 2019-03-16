@@ -37,6 +37,8 @@
         <activity android:name=".rxRedux.RxReduxActivity">
 
         </activity>
+        <activity android:name=".workmanager.WorkManagerActivity" />
+        <activity android:name=".rxjava.subscribeon.RxJavaSubscribeOnActivity" />
 
     </application>
 </manifest>
