@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.worker8.redditapi.model.t3_link.data.RedditLinkData
 import com.worker8.redditapi.model.t3_link.response.RedditLinkObject
 import github.com.worker8.archplayground.R
 import kotlinx.android.synthetic.main.row_reactive_views.view.*
@@ -16,8 +18,8 @@ class RxReactiveViewsAdapter : ListAdapter<RedditLinkObject, RecyclerView.ViewHo
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val redditLinkObject = getItem(position)
-        (holder as RxReactiveViewsViewHolder).bind(redditLinkObject.value.title)
+        val redditLinkData = getItem(position).value
+        (holder as RxReactiveViewsViewHolder).bind(redditLinkData)
     }
 
     companion object {
@@ -31,9 +33,12 @@ class RxReactiveViewsAdapter : ListAdapter<RedditLinkObject, RecyclerView.ViewHo
     }
 
     class RxReactiveViewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(text: String) {
+        fun bind(redditLinkData: RedditLinkData) {
             itemView.apply {
-                rxViewRowTextView.text = text
+                rxViewRowTextView.text = redditLinkData.title
+                Glide.with(context)
+                    .load(redditLinkData.url)
+                    .into(rxViewRowImageView)
             }
         }
 

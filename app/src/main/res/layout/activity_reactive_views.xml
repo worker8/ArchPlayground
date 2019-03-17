@@ -7,25 +7,48 @@
 
     <TextView
         android:id="@+id/rxViewLoadMoreButton"
+        style="@style/ArchButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="#c0392b"
-        android:padding="8dp"
+        android:background="@color/dark_blue"
         android:text="@string/load_more"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rxViewRefreshButton"
+        style="@style/ArchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/red_error"
+        android:text="@string/refresh"
+        app:layout_constraintStart_toEndOf="@id/rxViewLoadMoreButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rxViewChangeSubredditButton"
+        style="@style/ArchButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/blue"
+        android:text="@string/change_subreddit"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/rxViewRefreshButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rxViewRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rxViewLoadMoreButton"
-        tools:itemCount="3"
+        tools:itemCount="10"
         tools:listitem="@layout/row_reactive_views" />
 </androidx.constraintlayout.widget.ConstraintLayout>

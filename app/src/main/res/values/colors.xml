@@ -12,7 +12,8 @@
 
     <color name="black">#000000</color>
     <color name="black_alpha_50">#80000000</color>
-
+    <color name="black_alpha_20">#33000000</color>
+    <color name="black_alpha_10">#1A000000</color>
 
     <!--Hex color percentage: https://stackoverflow.com/a/17239853-->
     <color name="yellow">#FFF488</color>

@@ -1,40 +1,38 @@
 package github.com.worker8.archplayground.rxReactiveViews
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.worker8.redditapi.RedditApi
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import github.com.worker8.archplayground.R
-import github.com.worker8.archplayground.common.addTo
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_reactive_views.*
 
 class RxReactiveViewsActivity : AppCompatActivity() {
     val disposables = CompositeDisposable()
     val adapter = RxReactiveViewsAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reactive_views)
         rxViewRecyclerView.adapter = adapter
 
-        RedditApi().getMorePosts()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ (result, fuelError) ->
-                fuelError?.printStackTrace()
-                result?.value?.let { _list ->
-                    adapter.submitList(_list.valueList)
-                    _list.valueList.forEach {
-                        val temp = it.value
-                        Log.d("ddw", "${temp.title}")
-                    }
-                }
-            }, {
-                it.printStackTrace()
-            })
-            .addTo(disposables)
+        val viewModel = ViewModelProviders.of(this, RxReactiveViewsViewModelFactory()).get(RxReactiveViewsViewModel::class.java)
+        lifecycle.addObserver(viewModel)
+
+        viewModel.screenState.observe(this, Observer { list ->
+            adapter.submitList(list)
+        })
+
+        rxViewChangeSubredditButton.setOnClickListener {
+            viewModel.randomSubredditClick()
+        }
+        rxViewRefreshButton.setOnClickListener {
+            viewModel.refreshClick()
+        }
+        rxViewLoadMoreButton.setOnClickListener {
+            viewModel.onLoadMoreClick()
+        }
     }
 
     override fun onDestroy() {

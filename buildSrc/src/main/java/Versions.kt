@@ -8,10 +8,12 @@ object Versions {
     val rxBinding = "3.0.0-alpha1"
     val rxRelay = "2.1.0"
     val fuel = "2.0.1"
+    val glide = "4.9.0"
     val paging = "1.0.0"
     val pagingRx = "1.0.0-rc1"
     val archLifecycle = "2.1.0-alpha02"
     val room = "1.1.1"
+    val redditApiPixel = "v1.1.4"
 
     val support = "28.0.0"
     val retrofit = "2.4.0"
