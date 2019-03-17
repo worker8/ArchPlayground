@@ -24,13 +24,6 @@ android {
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
     }
-//    configurations.all {
-//        resolutionStrategy.force "com.android.support:design:$Versions.support"
-//        resolutionStrategy.force "com.android.support:support-v4:$Versions.support"
-//        resolutionStrategy.force "com.android.support:support-compat:$Versions.support"
-//        resolutionStrategy.force "com.android.support:support-media-compat:$Versions.support"
-//        resolutionStrategy.force "com.android.support:animated-vector-drawable:$Versions.support"
-//    }
 }
 
 dependencies {
@@ -38,13 +31,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Versions.Tools.kotlin"
     implementation "androidx.appcompat:appcompat:$Versions.appCompat"
     implementation "androidx.constraintlayout:constraintlayout:$Versions.constraintLayout"
-//    implementation "com.android.support:appcompat-v7:$Versions.support"
-//    implementation "com.android.support.constraint:constraint-layout:$Versions.constraintLayout"
     implementation "com.github.kittinunf.statik:statik:$Versions.statik"
+    implementation "com.github.kittinunf.fuel:fuel:$Versions.fuel"
     implementation "com.github.kittinunf.fuel:fuel-android:$Versions.fuel"
     implementation "com.github.kittinunf.fuel:fuel-rxjava:$Versions.fuel"
-//    implementation "android.arch.paging:runtime:$Versions.paging"
-//    implementation "android.arch.paging:rxjava2:$Versions.pagingRx"
     implementation "androidx.lifecycle:lifecycle-extensions:$Versions.archLifecycle"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$Versions.archLifecycle"
     implementation "io.reactivex.rxjava2:rxjava:$Versions.rxJava"
@@ -58,6 +48,9 @@ dependencies {
     //implementation "com.github.kittinunf:remote-redux-devtools-android:1.0.0.alpha8"
 //    implementation "com.github.kittinunf.remote-redux-devtools-android:core:1.0.0.alpha8"
 
+    //module deps
+    // implementation project(':redditapi')
+    implementation "com.github.worker8:Pixels:v1.1.4"
 
     testImplementation "io.mockk:mockk:1.8.13.kotlin13"
     testImplementation "junit:junit:$Versions.junit"

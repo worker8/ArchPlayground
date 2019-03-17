@@ -7,7 +7,7 @@ object Versions {
     val rxAndroid = "2.0.2"
     val rxBinding = "3.0.0-alpha1"
     val rxRelay = "2.1.0"
-    val fuel = "1.15.1"
+    val fuel = "2.0.1"
     val paging = "1.0.0"
     val pagingRx = "1.0.0-rc1"
     val archLifecycle = "2.1.0-alpha02"

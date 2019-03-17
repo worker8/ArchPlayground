@@ -3,11 +3,11 @@ package github.com.worker8.archplayground
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.github.kittinunf.statik.dsl.section
 import com.github.kittinunf.statik.dsl.statik
 import com.github.kittinunf.statik.dsl.textRow
+import github.com.worker8.archplayground.rxReactiveViews.RxReactiveViewsActivity
 import github.com.worker8.archplayground.rxRedux.RxReduxActivity
 import github.com.worker8.archplayground.simpleMVP.SimpleMvvmActivity
 import github.com.worker8.archplayground.simpleMVPRx.RxSimpleMvpActivity
@@ -46,7 +46,14 @@ class TopActivity : AppCompatActivity() {
             }
         }
 
-        val section = section { rows(row1, row2, row3, row4) }
+        val row5 = textRow {
+            text = "Rx Reactive Views"
+            onClickListener = {
+                startActivity(Intent(this@TopActivity, RxReactiveViewsActivity::class.java))
+            }
+        }
+
+        val section = section { rows(row1, row2, row3, row4, row5) }
 
         list.adapter = statik {
             sections(section)
