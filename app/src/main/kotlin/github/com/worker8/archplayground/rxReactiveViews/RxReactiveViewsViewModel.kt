@@ -24,9 +24,9 @@ class RxReactiveViewsViewModel(val viewInput: RxReactiveViewsViewModel.ViewInput
     fun onCreate() {
         viewInput.apply {
             Observable.merge(
+                loadMoreClickObservable,
                 refreshClickObservable.doOnNext { redditApi = RedditApi(redditApi.subreddit) },
-                randomClickObservable.doOnNext { redditApi = RedditApi(RedditApi.getRandomSubreddit()) },
-                loadMoreClickObservable
+                randomClickObservable.doOnNext { redditApi = RedditApi(RedditApi.getRandomSubreddit()) }
             )
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(Schedulers.io())

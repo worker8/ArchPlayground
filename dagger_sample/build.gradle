@@ -36,4 +36,16 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$Versions.dagger"
     implementation "com.google.dagger:dagger-android-support:$Versions.dagger"
     kapt "com.google.dagger:dagger-android-processor:$Versions.dagger"
+    implementation "com.github.worker8:Pixels:$Versions.redditApiPixel"
+    implementation "io.reactivex.rxjava2:rxjava:$Versions.rxJava"
+    implementation "io.reactivex.rxjava2:rxandroid:$Versions.rxAndroid"
+
+    implementation "com.github.kittinunf.fuel:fuel:$Versions.fuel"
+    implementation "com.github.kittinunf.fuel:fuel-android:$Versions.fuel"
+    implementation "com.github.kittinunf.fuel:fuel-rxjava:$Versions.fuel"
+
+    testImplementation "io.mockk:mockk:$Versions.mockk"
+    testImplementation "junit:junit:$Versions.junit"
+    androidTestImplementation "com.android.support.test:runner:$Versions.testRunner"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$Versions.espressoCore"
 }
