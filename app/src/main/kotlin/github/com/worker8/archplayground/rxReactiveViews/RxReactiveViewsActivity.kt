@@ -1,7 +1,7 @@
 package github.com.worker8.archplayground.rxReactiveViews
 
 import android.os.Bundle
-import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -36,10 +36,10 @@ class RxReactiveViewsActivity : AppCompatActivity() {
         viewModel.screenState.observe(this, Observer { list ->
             adapter.submitList(list)
         })
-        adapter.titleObservable
+        disposables.add(adapter.titleObservable
             .subscribe {
-                Log.d("ddw", "title clicked: ${it}")
-            }
+                Toast.makeText(this@RxReactiveViewsActivity, it, Toast.LENGTH_SHORT).show()
+            })
     }
 
     override fun onDestroy() {

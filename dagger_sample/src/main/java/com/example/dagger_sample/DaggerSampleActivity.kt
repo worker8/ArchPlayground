@@ -21,7 +21,7 @@ class DaggerSampleActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dagger_sample)
         setupViews()
-        //DaggerAppComponent.builder().build()
+
         disposableBag.add(
             redditRepo
                 .getPosts()
@@ -29,12 +29,12 @@ class DaggerSampleActivity : DaggerAppCompatActivity() {
                 .observeOn(redditRepo.getMainThread())
                 .subscribe(
                     { (result, fuelError) ->
-                    result?.let {
-                        it.value.valueList.forEach { redditLinkObject ->
-                            Log.d("ddw", "title: ${redditLinkObject.value.title}")
+                        result?.let {
+                            it.value.valueList.forEach { redditLinkObject ->
+                                Log.d("ddw", "title: ${redditLinkObject.value.title}")
+                            }
                         }
-                    }
-                }, {
+                    }, {
                     it.printStackTrace()
                 })
         )
