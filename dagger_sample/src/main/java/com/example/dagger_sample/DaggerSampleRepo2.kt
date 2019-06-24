@@ -6,14 +6,14 @@ import com.example.dagger_sample.util.defaultPrefs
 import com.example.dagger_sample.util.save
 import javax.inject.Inject
 
-class DaggerSampleRepo @Inject constructor(context: Context) : DaggerSampleRepoInterface {
+class DaggerSampleRepo2 @Inject constructor(context: Context) : DaggerSampleRepoInterface {
     private val prefs: SharedPreferences = context.defaultPrefs()
 
     private fun getSavedStringFromPref(): String = prefs.getString(CONSTANT_KEY, "")!!
 
     override fun getSavedString(): List<String> {
         val oldString = getSavedStringFromPref()
-        return oldString.split(DELIMITER)
+        return oldString.split(DELIMITER).map { "^$it^" }
     }
 
     override fun saveStringToPref(newString: String) {
